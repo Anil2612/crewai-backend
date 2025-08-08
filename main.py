@@ -1,3 +1,5 @@
+import os
+import uvicorn
 from fastapi import FastAPI
 from pydantic import BaseModel
 from services.crew_service import run_research_and_writing
@@ -15,3 +17,8 @@ def home():
 def run_task(request: TopicRequest):
     results = run_research_and_writing(request.topic)
     return {"topic": request.topic, "results": results}
+
+print('__name__', __name__)
+if __name__ == "__main__":
+    port = 8002
+    uvicorn.run("main:app", host="0.0.0.0", port=port, reload=True)
