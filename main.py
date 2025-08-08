@@ -13,6 +13,8 @@ class TopicRequest(BaseModel):
 def home():
     return {"message": "CrewAI Backend is running!"}
 
+print("Token:", os.getenv("HUGGINGFACE_API_TOKEN"))  # Should print your token
+
 @app.post("/run")
 def run_task(request: TopicRequest):
     results = run_research_and_writing(request.topic)

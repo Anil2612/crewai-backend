@@ -7,5 +7,5 @@ def create_research_agent():
         goal='Research given topic and return a detailed report',
         backstory='An expert in market trends and competitor analysis.',
         verbose=True,
-        llm='huggingface/gpt2'
+        llm='huggingface/bigscience/bloom'
     )
