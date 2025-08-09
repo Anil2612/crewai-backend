@@ -1,17 +1,18 @@
-from fastapi import FastAPI
-from pydantic import BaseModel
-from services.crew_service import run_research_and_writing
+from dotenv import load_dotenv
+from crew import research_crew
 
-app = FastAPI(title="CrewAI Backend", version="1.0.0")
+load_dotenv()
 
-class TopicRequest(BaseModel):
-    topic: str
+def run(topic: str):
+    result = research_crew.kickoff(inputs={"topic": topic})
 
-@app.get("/")
-def home():
-    return {"message": "CrewAI Backend is running!"}
+    print("-"*50)
+    print(result)
+    print("-" * 50)
 
-@app.post("/run")
-def run_task(request: TopicRequest):
-    results = run_research_and_writing(request.topic)
-    return {"topic": request.topic, "results": results}
+if __name__ == "__main__":
+    topic = (
+        "AI Agents"
+    )
+
+    run(topic)

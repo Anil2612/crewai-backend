@@ -1,5 +1,5 @@
-fastapi
-uvicorn
 crewai
-crewai_tools
+crewai-tools
 python-dotenv
+streamlit
+FastAPI
